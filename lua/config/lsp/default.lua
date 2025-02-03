@@ -22,16 +22,8 @@ function M.on_attach(client, bufnr)
         end
     end
 
-    -- Enable code lens.
-    if user_options.lsp_code_lens then
-        if client.supports_method("textDocument/codeLens") then
-            vim.lsp.codelens.refresh()
-            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-                buffer = bufnr,
-                callback = vim.lsp.codelens.refresh,
-            })
-        end
-    end
+    -- Setup keymaps for supported LSP functions.
+    require("config.lsp.keymapping").lsp_keymap_setup(client, bufnr)
 end
 
 M.autostart = true
