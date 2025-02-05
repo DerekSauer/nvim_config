@@ -15,6 +15,7 @@ local diagnostic_config = {
             return severity_signs[diagnostic.severity]
         end,
     },
+    virtual_lines = true,
     severity_sort = true,
     signs = {
         text = severity_signs,

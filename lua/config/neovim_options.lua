@@ -16,6 +16,7 @@ vim.opt.numberwidth = 3 -- Minimum 3 columns in the number line.
 vim.opt.showmode = false -- Do not showing editing mode, obvious from cursor.
 vim.opt.signcolumn = "yes" -- Force sign column to always be visible.
 vim.opt.laststatus = 3 -- Global status bar for all windows.
+vim.opt.cmdheight = 0 -- Hide the command line when not in use.
 vim.opt.updatetime = 1000 -- Delays after no typing before the CursorHold event is fired.
 vim.opt.splitright = true -- Open new vertical windows to the right.
 vim.opt.splitbelow = true -- Open new horizontal windows below current windows.
