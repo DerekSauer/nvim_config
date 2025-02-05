@@ -6,8 +6,6 @@ return {
             -- Package manager for LSP servers, DAP servers, linters, and formatters.
             {
                 "williamboman/mason.nvim",
-                lazy = true,
-                event = { "UIEnter" },
                 opts = {
                     ui = {
                         border = require("config.user_options").border,
@@ -18,7 +16,6 @@ return {
             -- Interop between Mason.nvim and lsp-config.
             {
                 "williamboman/mason-lspconfig.nvim",
-                lazy = true,
                 dependencies = {
                     "williamboman/mason.nvim",
                     "neovim/nvim-lspconfig",
@@ -29,7 +26,6 @@ return {
             -- LSP progress messages and notifications.
             {
                 "j-hui/fidget.nvim",
-                lazy = true,
                 opts = {
                     progress = {
                         suppress_on_insert = true,
@@ -52,8 +48,6 @@ return {
                     "rafamadriz/friendly-snippets",
                 },
                 version = "*",
-                lazy = true,
-                event = { "InsertEnter", "CmdlineEnter" },
                 opts = {
                     keymap = {
                         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
@@ -176,8 +170,6 @@ return {
                 },
             },
         },
-        lazy = false,
-        event = { "BufReadPre" },
         config = function()
             require("config.lsp")
         end,

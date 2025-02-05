@@ -1,7 +1,6 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = false,
         build = function()
             vim.cmd("TSUpdate")
         end,
@@ -37,8 +36,6 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
-        lazy = true,
-        event = "BufReadPre",
         config = function()
             require("treesitter-context").setup({ mode = "cursor", max_lines = 3 })
         end,
@@ -48,8 +45,6 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
-        lazy = true,
-        event = "InsertEnter",
         config = true,
     },
     {
@@ -57,8 +52,6 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
-        lazy = true,
-        event = "InsertEnter",
         config = true,
     },
 }
