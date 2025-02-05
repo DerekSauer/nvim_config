@@ -6,7 +6,7 @@ local settings = {
             arrayIndex = "Disable",
         },
         diagnostics = {
-            globals = { "vim", "USER_SETTINGS" },
+            globals = { "vim", "Snacks" },
             disable = { "missing-fields" },
         },
         workspace = {

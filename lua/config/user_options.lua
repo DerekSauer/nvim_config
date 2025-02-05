@@ -12,7 +12,7 @@ local user_options = {
     tabstop = 4,
 
     -- Transparency of popup windows. 0 = fully opaque, 100 = fully transparent.
-    winblend = 15,
+    winblend = 8,
 
     -- Tranparency of popup menus.
     pumblend = 10,
