@@ -22,6 +22,7 @@ return {
         Snacks.toggle.indent():map("<leader>i")
         Snacks.toggle.option("wrap", { name = "Line wrapping" }):map("<leader>w")
         Snacks.toggle.zen():map("<leader>z")
+        Snacks.toggle.option("background", { on = "dark", off = "light", name = "Light colorscheme" }):map("<leader>c")
     end,
 
     keys = {
@@ -38,6 +39,13 @@ return {
                 Snacks.picker.notifications()
             end,
             desc = "Notification history",
+        },
+        {
+            "<leader>C",
+            function()
+                Snacks.picker.colorschemes()
+            end,
+            desc = "Colorschemes",
         },
         {
             "<leader>fb",
