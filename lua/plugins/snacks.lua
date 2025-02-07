@@ -3,10 +3,6 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-        animate = {},
-        explorer = {
-            replace_netrw = true,
-        },
         git = {},
         gitbrowser = {},
         indent = {},
@@ -29,13 +25,6 @@ return {
     end,
 
     keys = {
-        {
-            "<leader>e",
-            function()
-                Snacks.explorer()
-            end,
-            desc = "Open file explorer",
-        },
         {
             "<leader>:",
             function()

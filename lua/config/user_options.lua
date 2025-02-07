@@ -19,9 +19,6 @@ local user_options = {
 
     -- Enable/Disable LSP inlay hints by default.
     lsp_inlay_hints = true,
-
-    -- Enable/Disable LSP code lens by default.
-    lsp_code_lens = true,
 }
 
 return user_options
