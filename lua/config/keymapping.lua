@@ -1,7 +1,10 @@
 local map = vim.keymap.set
 
+-- Escape clears search results.
+map("n", "<ESC>", "<ESC>:noh<CR>")
+
 -- Leave insert mode when in the terminal.
-map("t", "<esc>", [[<C-\><C-n>]], { desc = "Leave insert mode in terminal" })
+map("t", "<ESC>", [[<C-\><C-n>]], { desc = "Leave insert mode in terminal" })
 
 -- Cursor remains in place during Visual yank.
 map("x", "y", "mmy`m", { desc = "Yank selection" })
