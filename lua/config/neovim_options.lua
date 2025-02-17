@@ -46,3 +46,9 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use tree sitter parsing 
 vim.opt.ignorecase = true -- Ignore character case when searching.
 vim.opt.smartcase = true -- Unless explicitly searching for upper case characters.
 vim.opt.hlsearch = true -- Hightlight search results while typing.
+
+-- Disable remote plugin providers.
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
