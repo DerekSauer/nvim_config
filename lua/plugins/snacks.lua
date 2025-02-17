@@ -3,28 +3,42 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-        git = {},
-        gitbrowser = {},
-        indent = {},
-        input = {},
-        scratch = {},
-        toggle = {},
-        picker = {},
+        bigfile = { enabled = false },
+        dashboard = { enabled = false },
+        explorer = { enabled = false },
+        image = { enabled = false },
+        input = { enabled = true },
+        lazygit = { enabled = false },
+        notifier = { enabled = false },
+        picker = { enabled = true },
+        quickfile = { enabled = false },
+        scope = { enabled = false },
+        scroll = { enabled = false },
+        statuscolumn = { enabled = false },
+        terminal = { enabled = false },
+        toggle = { enabled = true },
+        words = { enabled = false },
     },
-    config = function()
-        local wk = require("which-key")
-        wk.add({
-            { "<leader>f", group = "Find" },
-            { "<leader>g", group = "Git" },
-            { "<leader>s", group = "Search" },
+    init = function()
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "VeryLazy",
+            callback = function()
+                local wk = require("which-key")
+                wk.add({
+                    { "<leader>f", group = "Find" },
+                    { "<leader>g", group = "Git" },
+                    { "<leader>s", group = "Search" },
+                })
+
+                Snacks.toggle.indent():map("<leader>i")
+                Snacks.toggle.option("wrap", { name = "Line wrapping" }):map("<leader>w")
+                Snacks.toggle.zen():map("<leader>z")
+                Snacks.toggle
+                    .option("background", { on = "dark", off = "light", name = "Light colorscheme" })
+                    :map("<leader>c")
+            end,
         })
-
-        Snacks.toggle.indent():map("<leader>i")
-        Snacks.toggle.option("wrap", { name = "Line wrapping" }):map("<leader>w")
-        Snacks.toggle.zen():map("<leader>z")
-        Snacks.toggle.option("background", { on = "dark", off = "light", name = "Light colorscheme" }):map("<leader>c")
     end,
-
     keys = {
         {
             "<leader>:",
