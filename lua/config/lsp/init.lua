@@ -20,6 +20,9 @@ end
 
 -- Configure each installed server, override with user settings if needed.
 for _, server_name in pairs(mason_lsp.get_installed_servers()) do
-    local opts = make_config(server_name)
-    lsp[server_name].setup(opts)
+    -- Skip setting up `rust-analyzer`. Rustaceanvim will handle it.
+    if server_name ~= "rust_analyzer" then
+        local opts = make_config(server_name)
+        lsp[server_name].setup(opts)
+    end
 end
