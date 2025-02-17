@@ -49,6 +49,9 @@ return {
                 },
                 version = "*",
                 opts = {
+                    appearance = {
+                        use_nvim_cmp_as_default = true,
+                    },
                     keymap = {
                         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
                         ["<C-e>"] = { "hide", "fallback" },
