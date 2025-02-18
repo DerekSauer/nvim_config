@@ -10,6 +10,22 @@ else
     vim.opt.clipboard = "unnamedplus"
 end
 
+-- Use Powershell on Windows instead of cmd.
+if vim.fn.has("win32") == 1 then
+    if vim.fn.executable("pwsh") == 1 then
+        vim.opt.shell = "pwsh"
+    else
+        vim.opt.shell = "powershell"
+    end
+
+    vim.opt.shellcmdflag =
+        "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
+    vim.opt.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    vim.opt.shellpipe = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+    vim.opt.shellquote = ""
+    vim.opt.shellxquote = ""
+end
+
 vim.opt.number = true -- Enable line numbers in the gutter.
 vim.opt.relativenumber = true -- Use relative line numbering.
 vim.opt.numberwidth = 3 -- Minimum 3 columns in the number line.
