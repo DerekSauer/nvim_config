@@ -7,7 +7,7 @@ return {
                 function()
                     require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
                 end,
-                desc = "Breakpoint Condition",
+                desc = "Conditional breakpoint",
             },
             {
                 "<leader>dd",
@@ -17,7 +17,21 @@ return {
                 desc = "Toggle Breakpoint",
             },
             {
+                "<F9>",
+                function()
+                    require("dap").toggle_breakpoint()
+                end,
+                desc = "Toggle Breakpoint",
+            },
+            {
                 "<leader>dc",
+                function()
+                    require("dap").continue()
+                end,
+                desc = "Run/Continue",
+            },
+            {
+                "<F5>",
                 function()
                     require("dap").continue()
                 end,
@@ -39,6 +53,13 @@ return {
             },
             {
                 "<leader>di",
+                function()
+                    require("dap").step_into()
+                end,
+                desc = "Step Into",
+            },
+            {
+                "<F7>",
                 function()
                     require("dap").step_into()
                 end,
@@ -80,7 +101,21 @@ return {
                 desc = "Step Over",
             },
             {
+                "<F8>",
+                function()
+                    require("dap").step_over()
+                end,
+                desc = "Step Over",
+            },
+            {
                 "<leader>dP",
+                function()
+                    require("dap").pause()
+                end,
+                desc = "Pause",
+            },
+            {
+                "<F6>",
                 function()
                     require("dap").pause()
                 end,
@@ -133,16 +168,21 @@ return {
                 dap.adapaters = {}
             end
 
+            -- Codelldb needs special handling on Windows.
+            local codelldb_exe = vim.fn.has("win32") == 1 and "codelldb.cmd" or "codelldb"
+
             dap.adapters.codelldb = {
-                type = "executable",
-                command = "codelldb",
+                type = "server",
+                port = "${port}",
+                executable = {
+                    command = codelldb_exe,
+                    args = { "--port", "${port}" },
+                    detached = vim.fn.has("win32") == 1 and false or true,
+                },
             }
 
             -- Alias `lldb` to `codelldb` so existing .vscode/launch.json configurations function.
-            dap.adapters.lldb = {
-                type = "executable",
-                command = "codelldb",
-            }
+            dap.adapters.lldb = dap.adapters.codelldb
 
             -- Probe-rs requires additional configuration.
             dap.adapters["probe-rs-debug"] = {
